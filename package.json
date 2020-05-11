@@ -1,36 +1,36 @@
 {
-  "name": "@uniswap-v1-app/monorepo",
+  "name": "@pooltogether-pod/monorepo",
   "version": "1.0.0",
   "keywords": [
     "ethereum",
     "react",
-    "uniswap",
+    "pooltogether",
     "workspaces",
     "yarn"
   ],
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "react-app:build": "yarn workspace @uniswap-v1-app/react-app build --max-old-space-size=12288",
-    "react-app:eject": "yarn workspace @uniswap-v1-app/react-app eject",
-    "react-app:start": "yarn workspace @uniswap-v1-app/react-app start",
-    "react-app:test": "yarn workspace @uniswap-v1-app/react-app test",
+    "react-app:build": "yarn workspace react-app build --max-old-space-size=12288",
+    "react-app:eject": "yarn workspace react-app eject",
+    "react-app:test": "yarn workspace react-app test",
     "ship": "echo 'Sorry, this does not work yet'",
-    "build": "yarn workspace @uniswap-v1-app/react-app build --max-old-space-size=12288",
-    "chain": "cd packages/buidler && npx buidler node",
-    "node": "cd packages/buidler && npx buidler node",
-    "test": "cd packages/buidler && npx buidler test",
-    "start": "yarn workspace @uniswap-v1-app/react-app start",
-    "compile": "cd packages/buidler && npx buidler compile",
-    "deploy": "cd packages/buidler && npx buidler run scripts/deploy.js && npx buidler run scripts/publish.js",
+    "format": "yarn workspace react-app format",
+    "format:file": "yarn workspace react-app format:file",
+    "lint": "yarn workspace react-app lint",
+    "lint:fix": "yarn workspace react-app lint:fix",
+    "lint:file": "yarn workspace react-app lint:file",
+    "quality": "yarn workspace react-app quality",
+    "build": "yarn workspace react-app build --max-old-space-size=12288",
+    "chain": "yarn workspace buidler chain",
+    "test": "yarn workspace buidler test",
+    "start": "yarn workspace react-app start",
+    "compile": "yarn workspace buidler compile",
+    "deploy": "yarn workspace buidler run scripts/deploy.js && npx buidler run scripts/publish.js",
     "watch": "cd packages/buidler && node scripts/watch.js",
-    "accounts": "cd packages/buidler && npx buidler accounts",
-    "balance": "cd packages/buidler && npx buidler balance",
-    "send": "cd packages/buidler && npx buidler send"
-  },
-  "devDependencies": {
-    "@nomiclabs/buidler": "1.3.3-rc.0",
-    "@nomiclabs/buidler-truffle5": "1.3.3-rc.0",
-    "@nomiclabs/buidler-web3": "1.3.3-rc.0"
+    "accounts": "yarn workspace buidler accounts",
+    "balance": "yarn workspace buidler balance",
+    "send": "yarn workspace buidler send"
   },
   "workspaces": {
     "packages": [

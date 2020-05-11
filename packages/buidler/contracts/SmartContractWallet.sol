@@ -3,8 +3,7 @@ pragma solidity >=0.6.0 <0.7.0;
 import "@nomiclabs/buidler/console.sol";
 
 contract SmartContractWallet {
-
-  string public title = "📄 Smoort Contract Wallet";
+  string public title = "📄 Smart Contract Wallet";
   address public owner;
 
   constructor(address _owner) public {
