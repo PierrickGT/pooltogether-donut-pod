@@ -1,21 +1,11 @@
 import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
 import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
 
-import App from './App';
+import Root from 'app/Root';
 
 import './index.css';
 
-// This is the official Uniswap v1 subgraph. You can replace it with your own, if you need to.
-// See all subgraphs: https://thegraph.com/explorer/
-const client = new ApolloClient({
-    uri: 'https://api.thegraph.com/subgraphs/name/graphprotocol/uniswap',
-});
+ReactModal.setAppElement('#root');
 
-ReactDOM.render(
-    <ApolloProvider client={client}>
-        <App />
-    </ApolloProvider>,
-    document.getElementById('root'),
-);
+ReactDOM.render(<Root />, document.getElementById('root'));

@@ -27,7 +27,7 @@
           ["^react$", "^@?\\w"],
           // Internal imports. This package doesn't manage absolute imports for now
           [
-            "^(__mocks__|app|containers|components|contracts|helpers|hooks|services|types|Constants|setupTests)(/.*|$)"
+            "^(__mocks__|app|containers|components|contracts|helpers|hooks|images|services|styles|types|Constants|setupTests)(/.*|$)"
           ],
           // Parent imports. Put `..` last.
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],

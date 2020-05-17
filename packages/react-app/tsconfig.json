@@ -19,6 +19,9 @@
     "noEmit": true,
     "jsx": "react",
     "baseUrl": "src",
+    "types": [
+      "webpack-env"
+    ],
     "typeRoots": [
       "./node_modules/@types/",
       "./src/types/"

@@ -1,88 +1,88 @@
 import React from 'react';
-import { DownloadOutlined, UploadOutlined } from '@ant-design/icons';
-import { Card, Col, List, Row } from 'antd';
-import { ethers } from 'ethers';
-import Blockies from 'react-blockies';
+// import { DownloadOutlined, UploadOutlined } from '@ant-design/icons';
+// import { Card, Col, List, Row } from 'antd';
+// import { ethers } from 'ethers';
+// import Blockies from 'react-blockies';
 
-import { Address, Balance, Timeline } from './components';
-import { Transactor } from './helpers';
-import {
-    useBalance,
-    useBlockNumber,
-    useContractLoader,
-    useContractReader,
-    useEventListener,
-} from './hooks';
-const { Meta } = Card;
+// import { Address, Balance, Timeline } from './components';
+// import { Transactor } from './helpers';
+// import {
+//     useBalance,
+//     useBlockNumber,
+//     useContractLoader,
+//     useContractReader,
+//     useEventListener,
+// } from './hooks';
+// const { Meta } = Card;
 
-const contractName = 'SmartContractWallet';
+// const contractName = 'SmartContractWallet';
 
-export default function SmartContractWallet(props) {
-    const tx = Transactor(props.injectedProvider, props.gasPrice);
+export default function SmartContractWallet() {
+    // const tx = Transactor(props.injectedProvider, props.gasPrice);
 
-    const localBlockNumber = useBlockNumber(props.localProvider);
-    const localBalance = useBalance(props.address, props.localProvider);
+    // const localBlockNumber = useBlockNumber(props.localProvider);
+    // const localBalance = useBalance(props.address, props.localProvider);
 
-    const readContracts = useContractLoader(props.localProvider);
-    const writeContracts = useContractLoader(props.injectedProvider);
+    // const readContracts = useContractLoader(props.localProvider);
+    // const writeContracts = useContractLoader(props.injectedProvider);
 
-    const title = useContractReader(readContracts, contractName, 'title', 1777);
-    const owner = useContractReader(readContracts, contractName, 'owner', 1777);
+    // const title = useContractReader(readContracts, contractName, 'title', 1777);
+    // const owner = useContractReader(readContracts, contractName, 'owner', 1777);
 
-    const ownerUpdates = useEventListener(
-        readContracts,
-        contractName,
-        'UpdateOwner',
-        props.localProvider,
-        1,
-    ); //set that last number to the block the contract is deployed (this needs to be automatic in the contract loader!?!)
+    // const ownerUpdates = useEventListener(
+    //     readContracts,
+    //     contractName,
+    //     'UpdateOwner',
+    //     props.localProvider,
+    //     1,
+    // ); //set that last number to the block the contract is deployed (this needs to be automatic in the contract loader!?!)
 
-    const contractAddress = readContracts ? readContracts[contractName].address : '';
-    const contractBalance = useBalance(contractAddress, props.localProvider);
+    // const contractAddress = readContracts ? readContracts[contractName].address : '';
+    // const contractBalance = useBalance(contractAddress, props.localProvider);
 
-    let displayAddress, displayOwner;
+    // let displayAddress, displayOwner;
 
-    if (readContracts && readContracts[contractName]) {
-        displayAddress = (
-            <Row>
-                <Col
-                    span={8}
-                    style={{ textAlign: 'right', opacity: 0.333, paddingRight: 6, fontSize: 24 }}
-                >
-                    Deployed to:
-                </Col>
-                <Col span={16}>
-                    <Address value={contractAddress} />
-                </Col>
-            </Row>
-        );
-        displayOwner = (
-            <Row>
-                <Col
-                    span={8}
-                    style={{ textAlign: 'right', opacity: 0.333, paddingRight: 6, fontSize: 24 }}
-                >
-                    Owner:
-                </Col>
-                <Col span={16}>
-                    <Address
-                        value={owner}
-                        onChange={(newOwner) => {
-                            tx(
-                                writeContracts['SmartContractWallet'].updateOwner(newOwner, {
-                                    gasLimit: ethers.utils.hexlify(40000),
-                                }),
-                            );
-                        }}
-                    />
-                </Col>
-            </Row>
-        );
-    }
+    // if (readContracts && readContracts[contractName]) {
+    //     displayAddress = (
+    //         <Row>
+    //             <Col
+    //                 span={8}
+    //                 style={{ textAlign: 'right', opacity: 0.333, paddingRight: 6, fontSize: 24 }}
+    //             >
+    //                 Deployed to:
+    //             </Col>
+    //             <Col span={16}>
+    //                 <Address value={contractAddress} />
+    //             </Col>
+    //         </Row>
+    //     );
+    //     displayOwner = (
+    //         <Row>
+    //             <Col
+    //                 span={8}
+    //                 style={{ textAlign: 'right', opacity: 0.333, paddingRight: 6, fontSize: 24 }}
+    //             >
+    //                 Owner:
+    //             </Col>
+    //             <Col span={16}>
+    //                 <Address
+    //                     value={owner}
+    //                     onChange={(newOwner) => {
+    //                         tx(
+    //                             writeContracts['SmartContractWallet'].updateOwner(newOwner, {
+    //                                 gasLimit: ethers.utils.hexlify(40000),
+    //                             }),
+    //                         );
+    //                     }}
+    //                 />
+    //             </Col>
+    //         </Row>
+    //     );
+    // }
 
     return (
         <div>
-            <Card
+            {/* <Card
                 title={
                     <div>
                         {title}
@@ -175,7 +175,7 @@ export default function SmartContractWallet(props) {
                     contractHasEther={parseFloat(contractBalance) > 0}
                     amOwnerOfContract={owner === props.address}
                 />
-            </div>
+            </div> */}
         </div>
     );
 }

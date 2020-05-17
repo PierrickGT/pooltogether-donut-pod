@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { SendOutlined } from '@ant-design/icons';
-import { Button, Input, Tooltip } from 'antd';
-import { ethers } from 'ethers';
-import Blockies from 'react-blockies';
+import React from 'react';
+// import { SendOutlined } from '@ant-design/icons';
+// import { Button, Input, Tooltip } from 'antd';
+// import { ethers } from 'ethers';
+// import Blockies from 'react-blockies';
 
-import { Transactor } from '../helpers';
+// import { Transactor } from '../helpers';
 
-export default function Faucet(props) {
-    const [address, setAddress] = useState();
+export default function Faucet() {
+    // const [address, setAddress] = useState();
 
-    let blockie;
-    if (address && typeof address.toLowerCase == 'function') {
-        blockie = <Blockies seed={address.toLowerCase()} size={8} scale={3} />;
-    } else {
-        blockie = <div></div>;
-    }
+    // let blockie;
+    // if (address && typeof address.toLowerCase == 'function') {
+    //     blockie = <Blockies seed={address.toLowerCase()} size={8} scale={3} />;
+    // } else {
+    //     blockie = <div></div>;
+    // }
 
-    const localTx = Transactor(props.localProvider);
+    // const localTx = Transactor(props.localProvider);
 
     return (
         <span>
-            <Input
+            {/* <Input
                 size="large"
                 placeholder="local faucet"
                 prefix={blockie}
@@ -43,7 +43,7 @@ export default function Faucet(props) {
                         />
                     </Tooltip>
                 }
-            />
+            /> */}
         </span>
     );
 }

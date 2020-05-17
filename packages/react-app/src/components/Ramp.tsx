@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { DollarCircleOutlined } from '@ant-design/icons';
-import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk';
-import { Button, Divider, Modal } from 'antd';
+import React from 'react';
+// import { DollarCircleOutlined } from '@ant-design/icons';
+// import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk';
+// import { Button, Divider, Modal } from 'antd';
 
-export default function Ramp(props) {
-    const [modalUp, setModalUp] = useState('down');
+export default function Ramp() {
+    // const [modalUp, setModalUp] = useState('down');
 
-    const type = 'default';
+    // const type = 'default';
 
     return (
         <div>
-            <Button
+            {/* <Button
                 size="large"
                 shape="round"
                 onClick={() => {
@@ -117,7 +117,7 @@ export default function Ramp(props) {
                         <span style={{ paddingRight: 15 }}>🛠</span> Testnet Faucets
                     </Button>
                 </p>
-            </Modal>
+            </Modal> */}
         </div>
     );
 }
