@@ -1,4 +1,4 @@
-## @pooltogether-pod/contracts
+## @pooltogether-donut-pod/contracts
 
 A minimalist, opinionated structure for managing smart contract ABIs and addresses.<br/>
 

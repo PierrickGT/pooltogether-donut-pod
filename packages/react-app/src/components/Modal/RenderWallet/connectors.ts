@@ -10,12 +10,18 @@ import { POLLING_INTERVAL, SUPPORTED_CHAIN_IDS } from 'Constants';
 import { Web3ReactContextInterface } from 'types/web3-react';
 
 const RPC_URLS: { [chainId: number]: string } = {
-    1: process.env.REACT_APP_RPC_URL as string,
+    1: process.env.REACT_APP_INFURA_MAINNET_PROVIDER as string,
+    42: process.env.REACT_APP_INFURA_KOVAN_PROVIDER as string,
+    1337: process.env.REACT_APP_LOCAL_PROVIDER as string,
 };
 
 const network = new NetworkConnector({
-    urls: { 1: RPC_URLS[1] },
-    defaultChainId: 1,
+    urls: {
+        1: RPC_URLS[1],
+        42: RPC_URLS[42],
+        1337: RPC_URLS[1337],
+    },
+    defaultChainId: 42,
     pollingInterval: POLLING_INTERVAL,
 });
 

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useWeb3React } from '@web3-react/core';
 import { Button } from 'antd';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Modal, { useModal } from 'components/Modal';
 import RenderWalletModal from 'components/Modal/RenderWallet';
+import { getPoolDaiPrize } from 'helpers/Pool';
+import backgroundDonut from 'images/DiamondBackground.png';
 import { globalStyles } from 'styles/global';
 
 import { Header } from '../components';
@@ -12,35 +15,53 @@ import { Header } from '../components';
 // import SmartContractWallet from './SmartContractWallet';
 import 'antd/dist/antd.css';
 
-// const mainnetProvider = new ethers.providers.InfuraProvider(
-//     'mainnet',
-//     '2717afb6bf164045b5d5468031b93f87',
-// );
-// const localProvider = new ethers.providers.JsonRpcProvider(
-//     process.env.REACT_APP_PROVIDER ? process.env.REACT_APP_PROVIDER : 'http://localhost:8545',
-// );
-
 const GlobalStyle = createGlobalStyle`${globalStyles}`;
 
+const StyledApp = styled.div`
+    background-image: url(${backgroundDonut});
+    background-color: #230548;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: 187.85px;
+    height: 100%;
+`;
+
 const App: React.FC = () => {
+    const { account, active: walletConnected, chainId, library } = useWeb3React();
     const { modalIsOpen: walletModalIsOpen, toggleModal: toggleWalletModal } = useModal();
 
-    // const {
-    //     active: walletIsConnected,
-    //     account,
-    //     chainId,
-    //     connector: walletProvider,
-    //     error,
-    // } = useWeb3React<Web3ReactContextInterface>();
+    const [currentPrize, setCurrentPrize] = useState('');
+    const [estimatedPrize, setEstimatedPrize] = useState('');
 
-    // const [injectedProvider, setInjectedProvider] = useState();
-    // const price = useExchangePrice(mainnetProvider);
-    // const gasPrice = useGasPrice('fast');
+    useEffect(() => {
+        if (walletConnected) {
+            const getPrize = async () => {
+                const { prizeInDai, prizeEstimateInDai } = await getPoolDaiPrize(
+                    account as string,
+                    chainId as number,
+                    library,
+                );
+
+                setCurrentPrize(Number(prizeInDai).toFixed(4));
+                setEstimatedPrize(Number(prizeEstimateInDai).toFixed());
+            };
+
+            getPrize();
+        }
+    }, [walletConnected]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="App">
+        <StyledApp>
             <Header />
-            <div style={{ position: 'fixed', textAlign: 'right', right: 0, top: 0, padding: 10 }}>
+            <div
+                style={{
+                    position: 'fixed',
+                    textAlign: 'right',
+                    right: 0,
+                    top: 0,
+                    padding: 10,
+                }}
+            >
                 <Button type="primary" onClick={toggleWalletModal}>
                     Connect wallet
                 </Button>
@@ -53,6 +74,9 @@ const App: React.FC = () => {
                     price={price}
                 /> */}
             </div>
+            {currentPrize}
+            <br />
+            {estimatedPrize}
             {/* <div style={{ padding: 40, textAlign: 'left' }}>
                 <SmartContractWallet
                     address={address}
@@ -108,7 +132,7 @@ const App: React.FC = () => {
                 title="Select a Wallet"
             />
             <GlobalStyle />
-        </div>
+        </StyledApp>
     );
 };
 

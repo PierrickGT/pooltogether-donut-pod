@@ -20,3 +20,5 @@ declare const DocumentTouch;
 // TODO: need to find a better way to handle types
 declare module '@walletconnect/web3-provider';
 declare module 'burner-provider';
+declare module '@pooltogether-donut-pod/contracts';
+declare module 'pooltogetherjs';

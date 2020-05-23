@@ -1,0 +1,342 @@
+{
+  "fileName": "MockJoinLike.sol",
+  "contractName": "MockJoinLike",
+  "source": "pragma solidity 0.5.12;\n\n// import { GemLike, JoinLike } from \"scd-mcd-migration/src/Interfaces.sol\";\n\ncontract MockJoinLike {\n  address public gem;\n  address public dai;\n\n  constructor(\n    address _gem,\n    address _dai\n  ) public {\n    gem = _gem;\n    dai = _dai;\n  }\n}",
+  "sourcePath": "@pooltogether/pooltogether-contracts/contracts/test/maker/MockJoinLike.sol",
+  "sourceMap": "103:169:30:-;;;174:96;8:9:-1;5:2;;;30:1;27;20:12;5:2;174:96:30;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;174:96:30;;;;;;;239:3;:10;;-1:-1:-1;;;;;239:10:30;;;-1:-1:-1;;;;;;239:10:30;;;;;;-1:-1:-1;255:10:30;;;;;;;;;;;;;;-1:-1:-1;;;;103:169:30;;;;",
+  "deployedSourceMap": "103:169:30:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;103:169:30;;;;;;;;;;;;;;;;;;;;;;;;129:18;;;:::i;:::-;;;;-1:-1:-1;;;;;129:18:30;;;;;;;;;;;;;;151;;;:::i;129:::-;;;-1:-1:-1;;;;;129:18:30;;:::o;151:::-;;;-1:-1:-1;;;;;151:18:30;;:::o",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_gem",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_dai",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "dai",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "gem",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "ast": {
+    "absolutePath": "@pooltogether/pooltogether-contracts/contracts/test/maker/MockJoinLike.sol",
+    "exportedSymbols": {
+      "MockJoinLike": [
+        10014
+      ]
+    },
+    "id": 10015,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9993,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:30"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 10014,
+        "linearizedBaseContracts": [
+          10014
+        ],
+        "name": "MockJoinLike",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 9995,
+            "name": "gem",
+            "nodeType": "VariableDeclaration",
+            "scope": 10014,
+            "src": "129:18:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 9994,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "129:7:30",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 9997,
+            "name": "dai",
+            "nodeType": "VariableDeclaration",
+            "scope": 10014,
+            "src": "151:18:30",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 9996,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "151:7:30",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 10012,
+              "nodeType": "Block",
+              "src": "233:37:30",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10006,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 10004,
+                      "name": "gem",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9995,
+                      "src": "239:3:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10005,
+                      "name": "_gem",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9999,
+                      "src": "245:4:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "239:10:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 10007,
+                  "nodeType": "ExpressionStatement",
+                  "src": "239:10:30"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10010,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 10008,
+                      "name": "dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9997,
+                      "src": "255:3:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10009,
+                      "name": "_dai",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10001,
+                      "src": "261:4:30",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "255:10:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 10011,
+                  "nodeType": "ExpressionStatement",
+                  "src": "255:10:30"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10013,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10002,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9999,
+                  "name": "_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10013,
+                  "src": "191:12:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9998,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "191:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10001,
+                  "name": "_dai",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10013,
+                  "src": "209:12:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10000,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "209:7:30",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "185:40:30"
+            },
+            "returnParameters": {
+              "id": 10003,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "233:0:30"
+            },
+            "scope": 10014,
+            "src": "174:96:30",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 10015,
+        "src": "103:169:30"
+      }
+    ],
+    "src": "0:272:30"
+  },
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161012b38038061012b8339818101604052604081101561003357600080fd5b508051602090910151600080546001600160a01b039384166001600160a01b0319918216179091556001805493909216921691909117905560b2806100796000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80637bd2bea7146037578063f4b9fa75146059575b600080fd5b603d605f565b604080516001600160a01b039092168252519081900360200190f35b603d606e565b6000546001600160a01b031681565b6001546001600160a01b03168156fea265627a7a72315820727067b1be1821b3f446722bba300e554bae34adc3914eb43b17fb90d4fcdf1364736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80637bd2bea7146037578063f4b9fa75146059575b600080fd5b603d605f565b604080516001600160a01b039092168252519081900360200190f35b603d606e565b6000546001600160a01b031681565b6001546001600160a01b03168156fea265627a7a72315820727067b1be1821b3f446722bba300e554bae34adc3914eb43b17fb90d4fcdf1364736f6c634300050c0032",
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "petersburg"
+  }
+}

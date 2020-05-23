@@ -6,14 +6,14 @@ import { useWeb3React } from '@web3-react/core';
 
 import WalletButton from 'components/Button/Wallet';
 import { ModalProps } from 'components/Modal';
-import { ModalContent, ModalHeader, ModalTitle } from 'components/Modal/style';
-import { NETWORK_CHAIN_ID } from 'Constants';
 import {
     metamask,
     useMetamaskEagerConnect,
     useMetamaskListener,
 } from 'components/Modal/RenderWallet/connectors';
-import { isKovanNetwork, isMainNetwork } from 'helpers/Network';
+import { ModalContent, ModalHeader, ModalTitle } from 'components/Modal/style';
+import { NETWORK_CHAIN_ID } from 'Constants';
+import { isKovanNetwork, isLocalNetwork, isMainNetwork } from 'helpers/Network';
 import MetamaskLogo from 'images/Metamask';
 
 const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
@@ -57,9 +57,9 @@ const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
     useEffect(() => {
         if (chainId) {
             setNetwork(NETWORK_CHAIN_ID[chainId]);
-            setNetworkAllowed(isKovanNetwork(chainId));
+            setNetworkAllowed(isKovanNetwork(chainId) || isLocalNetwork(chainId));
 
-            if (!isKovanNetwork(chainId)) {
+            if (!isKovanNetwork(chainId) || !isLocalNetwork(chainId)) {
                 setStatus('Please connect to Kovan testnet');
             }
         }

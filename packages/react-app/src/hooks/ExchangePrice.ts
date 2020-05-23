@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-// import { abis, addresses, MAINNET_ID } from '@pooltogether-pod/contracts';
+// import { abis, addresses, MAINNET_ID } from '@pooltogether-donut-pod/contracts';
 // import { ethers } from 'ethers';
 
 // import { usePoller } from '.';

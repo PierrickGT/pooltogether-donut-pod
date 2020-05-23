@@ -6,6 +6,7 @@ export const ROPSTEN_NETWORK_ID = 3;
 export const RINKEBY_NETWORK_ID = 4;
 export const GÖERLI_NETWORK_ID = 5;
 export const KOVAN_NETWORK_ID = 42;
+export const LOCAL_NETWORK_ID = 1337;
 
 export enum NETWORK_CHAIN_ID {
     'Mainnet' = MAINNET_NETWORK_ID,
@@ -13,6 +14,7 @@ export enum NETWORK_CHAIN_ID {
     'Rinkeby' = RINKEBY_NETWORK_ID,
     'Göerli' = GÖERLI_NETWORK_ID,
     'Kovan' = KOVAN_NETWORK_ID,
+    'Local' = LOCAL_NETWORK_ID,
 }
 
 // For UI purposes, all networks are "supported", but an error message
@@ -23,5 +25,10 @@ export const SUPPORTED_CHAIN_IDS = [
     RINKEBY_NETWORK_ID,
     GÖERLI_NETWORK_ID,
     KOVAN_NETWORK_ID,
+    LOCAL_NETWORK_ID,
 ];
 export const SUPPORTED_NETWORKS = ['Kovan'];
+
+// Tokens
+export const C_TOKEN_DECIMALS = 8;
+export const ERC_777_DECIMALS = 18;

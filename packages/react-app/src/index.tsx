@@ -1,3 +1,5 @@
+import 'dayjs/locale/fr';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
