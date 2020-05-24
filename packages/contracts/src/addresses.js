@@ -17,11 +17,19 @@ export default {
     },
     [KOVAN_ID]: {
         contracts: {
+            daiPod: '0x395fcB67ff8fdf5b9e2AeeCc02Ef7A8DE87a6677',
+            donutPod: '0xa7cb37bAc06E9E8cf0B76Adb6bb554c68F0A4ac9',
+            usdcPod: '0x9191Fd9f29cbbE73bA0e1B8959eC89Bc780e598b',
             poolDai: '0xC3a62C8Af55c59642071bC171Ebd05Eb2479B663',
+            poolSai: '0x9B80beA68835e8E39b9CeaeF83B7b49e9D41661C',
+            poolUsdc: '0xa0B2A98d0B769886ec06562ee9bB3572Fa4f3aAb',
         },
         tokens: {
             dai: '0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa',
             cDai: '0xe7bc397dbd069fc7d0109c0636d06888bb50668c',
+            poolDaiToken: '0x1237a9f1664895bc30cfe9eCD1e3f6C2A83700AD',
+            poolSaiToken: '0xC9689253a545D0C4dc733620281bBdCbb9FA4A4D',
+            poolUsdcToken: '0xf08d73ABC5E46811649380cCb02bF1aDCc37E59c',
         },
     },
     [LOCAL_ID]: {

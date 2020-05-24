@@ -48,7 +48,7 @@ const useMetamaskEagerConnect = () => {
         };
 
         attempConnection();
-    }, [connectTo]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (!attempted && isMetamaskConnected) {

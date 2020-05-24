@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Modal, { useModal } from 'components/Modal';
 import RenderWalletModal from 'components/Modal/RenderWallet';
+import { depositDaiToDonutPod, unlockDai } from 'helpers/Pod';
 import { getPoolDaiPrize } from 'helpers/Pool';
 import backgroundDonut from 'images/DiamondBackground.png';
 import { globalStyles } from 'styles/global';
@@ -27,11 +29,19 @@ const StyledApp = styled.div`
 `;
 
 const App: React.FC = () => {
+    const dispatch = useDispatch();
+
     const { account, active: walletConnected, chainId, library } = useWeb3React();
     const { modalIsOpen: walletModalIsOpen, toggleModal: toggleWalletModal } = useModal();
 
     const [currentPrize, setCurrentPrize] = useState('');
     const [estimatedPrize, setEstimatedPrize] = useState('');
+
+    const handleUnlockDai = () =>
+        unlockDai(account as string, chainId as number, library, dispatch);
+
+    const handleDepositDai = () =>
+        depositDaiToDonutPod(account as string, chainId as number, library, dispatch);
 
     useEffect(() => {
         if (walletConnected) {
@@ -47,24 +57,17 @@ const App: React.FC = () => {
             };
 
             getPrize();
+
+            if (walletModalIsOpen) {
+                toggleWalletModal();
+            }
         }
     }, [walletConnected]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <StyledApp>
-            <Header />
-            <div
-                style={{
-                    position: 'fixed',
-                    textAlign: 'right',
-                    right: 0,
-                    top: 0,
-                    padding: 10,
-                }}
-            >
-                <Button type="primary" onClick={toggleWalletModal}>
-                    Connect wallet
-                </Button>
+            <div className="container full-height-viewport">
+                <Header toggleWalletModal={toggleWalletModal} />
                 {/* <Account
                     address={account as string}
                     localProvider={localProvider}
@@ -73,11 +76,10 @@ const App: React.FC = () => {
                     mainnetProvider={mainnetProvider}
                     price={price}
                 /> */}
-            </div>
-            {currentPrize}
-            <br />
-            {estimatedPrize}
-            {/* <div style={{ padding: 40, textAlign: 'left' }}>
+                {currentPrize}
+                <br />
+                {estimatedPrize}
+                {/* <div style={{ padding: 40, textAlign: 'left' }}>
                 <SmartContractWallet
                     address={address}
                     injectedProvider={injectedProvider}
@@ -125,6 +127,13 @@ const App: React.FC = () => {
                     </Col>
                 </Row>
             </div> */}
+                <Button type="primary" onClick={handleUnlockDai}>
+                    Join the Pod
+                </Button>
+                <Button type="primary" onClick={handleDepositDai}>
+                    Deposit DAI to the Pod
+                </Button>
+            </div>
             <Modal
                 component={RenderWalletModal}
                 isOpen={walletModalIsOpen}

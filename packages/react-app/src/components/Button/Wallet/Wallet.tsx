@@ -5,7 +5,7 @@ import { Card } from 'antd';
 import styled from 'styled-components';
 
 import Spinner from 'components/Spinner';
-import { size as fontSize } from 'styles/fonts';
+import { size as fontsize } from 'styles/fonts';
 import { Web3ReactContextInterface } from 'types/web3-react';
 
 interface WalletButtonProps {
@@ -20,7 +20,7 @@ interface WalletButtonProps {
 
 const StyledText = styled.p`
     margin: auto;
-    font-size: ${(p: { invalid?: boolean }) => (p.invalid ? fontSize.small : fontSize.large)};
+    font-size: ${(p: { invalid?: boolean }) => (p.invalid ? fontsize.small : fontsize.large)};
     text-align: center;
 `;
 

@@ -17,7 +17,6 @@ import { isKovanNetwork, isLocalNetwork, isMainNetwork } from 'helpers/Network';
 import MetamaskLogo from 'images/Metamask';
 
 const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
-    // Get wallet info from Web3React
     const {
         account,
         active: walletConnected,
@@ -36,9 +35,9 @@ const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
     const [networkAllowed, setNetworkAllowed] = useState(false);
     const [status, setStatus] = useState('');
 
-    // Setup RPC event listene
+    // Setup RPC event listener
     const attemptedMMConnection = useMetamaskEagerConnect();
-    useMetamaskListener(!attemptedMMConnection);
+    useMetamaskListener(!attemptedMMConnection || !!selectedWallet);
 
     // Sets the balance to the current wallet on provider or network change
     useEffect(() => {
@@ -71,11 +70,7 @@ const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
         }
     }, [balance, chainId, error, network, networkAllowed, walletConnected]);
 
-    const renderModalContent = () => {
-        if (networkAllowed && walletConnected) {
-            return <p>Your connected</p>;
-        }
-
+    const RenderModalContent: React.FC = (): any => {
         if (networkAllowed || !walletConnected) {
             return (
                 <WalletButton
@@ -102,7 +97,9 @@ const WalletModal: React.FC<ModalProps> = ({ title, toggleModal }) => {
             <ModalHeader>
                 <ModalTitle>{title}</ModalTitle>
             </ModalHeader>
-            <ModalContent>{renderModalContent()}</ModalContent>
+            <ModalContent>
+                <RenderModalContent />
+            </ModalContent>
         </React.Fragment>
     );
 };

@@ -27,8 +27,9 @@ export const SUPPORTED_CHAIN_IDS = [
     KOVAN_NETWORK_ID,
     LOCAL_NETWORK_ID,
 ];
-export const SUPPORTED_NETWORKS = ['Kovan'];
+export const SUPPORTED_NETWORKS = ['Kovan', 'Local'];
 
 // Tokens
 export const C_TOKEN_DECIMALS = 8;
 export const ERC_777_DECIMALS = 18;
+export const ERC_20_DECIMALS = 18;
