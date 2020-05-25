@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
 import { useWeb3React } from '@web3-react/core';
 import { Button, PageHeader } from 'antd';
 import { utils } from 'ethers';
 import pluralize from 'pluralize';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { ERC_777_DECIMALS, NETWORK_CHAIN_ID } from 'Constants';
+import { NETWORK_CHAIN_ID } from 'Constants';
 import { getWalletName } from 'helpers/Network';
-import { getUserBalance, getUserPendingDeposit, redeemToDaiPool, withdrawFromDonutPod } from 'helpers/Pod';
+import { getUserBalance, getUserPendingDeposit, withdrawFromDonutPod } from 'helpers/Pod';
 import EthTraderLogo from 'images/EthTraderLogo.png';
 import PoolTogetherLogo from 'images/PoolTogetherLogo';
 
@@ -93,12 +93,10 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
                     library,
                 );
 
-                const formattedUserBalance = Number(
-                    utils.formatUnits(userBalance.toString(), ERC_777_DECIMALS),
-                );
+                const formattedUserBalance = Number(utils.formatUnits(userBalance.toString(), 18));
 
                 const formattedUserPendingDeposit = Number(
-                    utils.formatUnits(userPendingDeposit.toString(), ERC_777_DECIMALS),
+                    utils.formatUnits(userPendingDeposit.toString(), 18),
                 );
 
                 setUserBalance(formattedUserBalance + formattedUserPendingDeposit);
@@ -138,14 +136,7 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
 };
 
 const Header: React.FC<HeaderProps> = ({ toggleWalletModal }) => {
-    const {
-        account,
-        active: walletConnected,
-        chainId,
-        connector: walletProvider,
-        deactivate: disconnectWallet,
-        library,
-    } = useWeb3React();
+    const { account, chainId, library } = useWeb3React();
     const dispatch = useDispatch();
 
     const handleWithdraw = () => {

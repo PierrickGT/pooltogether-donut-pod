@@ -10,7 +10,6 @@ export default function useContractReader() {
     //     //it's okay to pass poll time as last argument without args for the call
     //     adjustPollTime = args;
     // }
-
     // const [value, setValue] = useState();
     // usePoller(async () => {
     //     if (contracts && contracts[contractName]) {
@@ -32,6 +31,5 @@ export default function useContractReader() {
     //         }
     //     }
     // }, adjustPollTime);
-
     // return value;
 }

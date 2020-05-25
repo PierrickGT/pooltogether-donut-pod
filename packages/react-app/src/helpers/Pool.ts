@@ -3,7 +3,6 @@ import { Contract, utils } from 'ethers';
 import moment from 'moment-timezone';
 import * as pt from 'pooltogetherjs';
 
-import { ERC_777_DECIMALS } from 'Constants';
 import { nonConstantMethodCall } from 'helpers/Contract';
 
 const getNextAwardDate = () => {
@@ -42,7 +41,7 @@ export const getPoolDaiPrize = async (account: string, chainId: number, library:
         currentDraw.feeFraction,
     );
 
-    const prizeInDai = utils.formatUnits(prize.toString(), ERC_777_DECIMALS);
+    const prizeInDai = utils.formatUnits(prize.toString(), 18);
 
     const nextAwardDate = Date.parse(
         getNextAwardDate().format('DD MMM YYYY HH:mm:ss').concat(' PST'),
@@ -66,7 +65,7 @@ export const getPoolDaiPrize = async (account: string, chainId: number, library:
         prizeSupplyRate,
     );
 
-    const prizeEstimateInDai = utils.formatUnits(prizeEstimate.toString(), ERC_777_DECIMALS);
+    const prizeEstimateInDai = utils.formatUnits(prizeEstimate.toString(), 18);
 
     return { prizeInDai, prizeEstimateInDai };
 };

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { useWeb3React } from '@web3-react/core';
-import { Card } from 'antd';
+import { Button } from 'antd';
 import styled from 'styled-components';
 
-import Spinner from 'components/Spinner';
-import { size as fontsize } from 'styles/fonts';
+import { purple } from 'styles/colors';
+import { size as fontSize } from 'styles/fonts';
+import { borderRadius, spacingUnit } from 'styles/variables';
 import { Web3ReactContextInterface } from 'types/web3-react';
 
 interface WalletButtonProps {
@@ -18,10 +19,42 @@ interface WalletButtonProps {
     walletProvider: any; //TODO: find a better type
 }
 
-const StyledText = styled.p`
-    margin: auto;
-    font-size: ${(p: { invalid?: boolean }) => (p.invalid ? fontsize.small : fontsize.large)};
+const StyledButton = styled(Button)`
+    background-color: ${purple[2]};
+    border-radius: ${borderRadius};
+    border: none;
+    color: #fff;
+    height: auto;
+    padding: ${spacingUnit(2)};
+
+    &:active,
+    &:focus,
+    &:hover {
+        background: ${purple[1]};
+        background-color: ${purple[1]};
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+        span {
+            color: #fff !important;
+        }
+    }
+
+    &::before {
+        background: ${purple[1]};
+    }
+`;
+
+const StyledText = styled.span`
+    color: ${purple[0]};
+    font-size: ${fontSize.big};
+    margin-left: ${spacingUnit()};
     text-align: center;
+    vertical-align: middle;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-delay: 0s;
 `;
 
 const WalletButton: React.FC<WalletButtonProps> = ({
@@ -40,24 +73,29 @@ const WalletButton: React.FC<WalletButtonProps> = ({
         if (error || active) {
             setShowSpinner(false);
         }
-    }, [active, error]);
+
+        if (selectedWallet) {
+            setShowSpinner(true);
+        }
+    }, [active, error, selectedWallet, showSpinner]);
 
     const handleClick = async () => {
         if (!invalid && !selectedWallet) {
-            setShowSpinner(true);
             setSelectedWallet(walletProvider);
             await activate(walletProvider);
         }
     };
 
     return (
-        <Card onClick={handleClick}>
-            {React.cloneElement(logo, { fill: '#000' })}
-            <StyledText invalid={invalid}>
-                {`${title} ${invalid ? 'is not supported in offline mode.' : ''}`}
-            </StyledText>
-            {showSpinner && <Spinner />}
-        </Card>
+        <StyledButton
+            icon={React.cloneElement(logo, { fill: '#fff' })}
+            onClick={handleClick}
+            loading={showSpinner}
+        >
+            <StyledText>{`${title} ${
+                invalid ? 'is not supported in offline mode.' : ''
+            }`}</StyledText>
+        </StyledButton>
     );
 };
 

@@ -4,14 +4,15 @@ import { rem } from 'polished';
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
 
-import { mediaMax } from 'styles/variables';
+import { purple } from 'styles/colors';
+import { borderRadius, mediaMax } from 'styles/variables';
 
 import { CloseButton } from './style';
 
 export interface ModalProps {
     className?: string;
     isOpen: boolean;
-    title: string;
+    title?: string;
     toggleModal: () => void;
 }
 
@@ -71,8 +72,10 @@ const StyledModal = styled(Modal)`
     }
 
     &__content {
-        background-color: #fff;
-        max-width: ${rem(600)};
+        background-color: ${purple[3]};
+        border-radius: ${borderRadius};
+        max-width: ${rem(920)};
+        position: relative;
         width: 100%;
 
         @media (max-width: ${mediaMax.sm}) {

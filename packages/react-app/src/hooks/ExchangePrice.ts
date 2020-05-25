@@ -4,10 +4,8 @@
 
 // import { usePoller } from '.';
 
-export default function useExchangePrice(
-) {
+export default function useExchangePrice() {
     // const [price, setPrice] = useState(0);
-
     // const pollPrice = () => {
     //     async function getPrice() {
     //         const ethDaiExchangeContract = new ethers.Contract(
@@ -23,6 +21,5 @@ export default function useExchangePrice(
     //     getPrice();
     // };
     // usePoller(pollPrice, pollTime);
-
     // return price;
 }

@@ -111,7 +111,7 @@ const Account: React.FC<AccountProps> = ({
 
     return (
         <div>
-    {/* //         {address ? <Address value={address} ensProvider={mainnetProvider} /> : 'Connecting...'}
+            {/* //         {address ? <Address value={address} ensProvider={mainnetProvider} /> : 'Connecting...'}
     //         <Balance address={address} provider={injectedProvider} dollarMultiplier={price} />
     //         {modalButtons} */}
         </div>

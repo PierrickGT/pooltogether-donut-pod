@@ -5,7 +5,14 @@ export type MetamaskProps = {
 };
 
 const Metamask: React.FC<MetamaskProps> = ({ fill = '#fff' }) => (
-    <svg width="159" height="144" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+        viewBox="0 0 159 144"
+        width="40"
+        height="36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ verticalAlign: 'middle' }}
+    >
         <path
             fillRule="evenodd"
             clipRule="evenodd"

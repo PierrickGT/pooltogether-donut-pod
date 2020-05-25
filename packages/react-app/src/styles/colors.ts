@@ -12,3 +12,6 @@ export const grey = [
     '#262626',
     '#000000',
 ];
+
+// PoolTogether colors
+export const purple = ['#9f7aea', '#815acf', '#613abb', '#452588', '#2c0f5a'];

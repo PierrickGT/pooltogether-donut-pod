@@ -4,7 +4,6 @@
 
 export default function useBlockNumber() {
     // const [blockNumber, setBlockNumber] = useState();
-
     // usePoller(
     //     () => {
     //         if (typeof provider !== 'undefined') {
@@ -19,6 +18,5 @@ export default function useBlockNumber() {
     //     },
     //     pollTime ? pollTime : 1777,
     // );
-
     // return blockNumber;
 }

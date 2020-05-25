@@ -2,7 +2,6 @@
 
 export default function useEventListener() {
     // const [updates, setUpdates] = useState([]);
-
     // useEffect(() => {
     //     if (typeof provider != 'undefined' && typeof startBlock != 'undefined') {
     //         // if you want to read _all_ events from your contracts, set this to the block number it is deployed
@@ -18,6 +17,5 @@ export default function useEventListener() {
     //         };
     //     }
     // }, [provider, contracts, contractName, eventName, startBlock]);
-
     // return updates;
 }

@@ -1,13 +1,12 @@
 import { rem } from 'polished';
 import { css } from 'styled-components';
 
-export const family = {
-    montserrat: 'Montserrat',
-};
-
 export const lineHeight = {
     base: css`
         ${rem(24)}
+    `,
+    large: css`
+        ${rem(32)}
     `,
 };
 
@@ -21,8 +20,11 @@ export const size = {
     small: css`
         ${rem(14)}
     `,
+    big: css`
+        ${rem(20)}
+    `,
     large: css`
-        ${rem(24)}
+        ${rem(22)}
     `,
 };
 

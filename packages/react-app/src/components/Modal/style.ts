@@ -1,17 +1,24 @@
 import { rem } from 'polished';
 import styled from 'styled-components';
 
-import { grey } from 'styles/colors';
+import { purple } from 'styles/colors';
 import { lineHeight, size as fontSize, weight as fontWeight } from 'styles/fonts';
-import { mediaMax, spacingUnit } from 'styles/variables';
+import { borderRadius, mediaMax, spacingUnit } from 'styles/variables';
 
 const closeButtonSizeDesktop = rem(40);
 const closeButtonSizeMobile = rem(32);
 
 export const ModalHeader = styled.div`
-    border-bottom: 2px solid ${grey[3]};
-    padding: ${rem(12)} 0;
+    background-color: ${purple[4]};
+    border-top-left-radius: ${borderRadius};
+    border-top-right-radius: ${borderRadius};
+    padding: ${spacingUnit(2)} 0;
     text-align: center;
+
+    h4 {
+        color: ${purple[0]};
+        font-size: ${rem(18)};
+    }
 
     @media (max-width: ${mediaMax.sm}) {
         padding: ${spacingUnit()} ${spacingUnit(8)} ${spacingUnit()} ${spacingUnit(2)};
@@ -38,26 +45,28 @@ export const ModalContent = styled.div`
 `;
 
 export const CloseButton = styled.button`
-    background-color: ${grey[4]};
+    background-color: ${purple[3]};
     border-radius: 100%;
     border: 0;
-    color: ${grey[8]};
+    color: ${purple[0]};
     cursor: pointer;
     height: ${closeButtonSizeDesktop};
     line-height: ${closeButtonSizeDesktop};
     padding: 0;
-    position: fixed;
-    right: ${spacingUnit(5)};
-    top: ${spacingUnit(3)};
+    position: absolute;
+    right: ${spacingUnit(2)};
+    top: ${spacingUnit()};
     width: ${closeButtonSizeDesktop};
 
-    @media (max-width: ${mediaMax.sm}) {
-        background-color: ${grey[2]};
+    &:hover {
+        background-color: ${purple[2]};
         color: #fff;
+    }
+
+    @media (max-width: ${mediaMax.sm}) {
         height: ${closeButtonSizeMobile};
         line-height: ${closeButtonSizeMobile};
-        right: spacingUnit();
-        top: spacingUnit();
+        top: ${rem(4)};
         width: ${closeButtonSizeMobile};
     }
 `;
