@@ -20,11 +20,17 @@ export const size = {
     small: css`
         ${rem(14)}
     `,
+    medium: css`
+        ${rem(18)}
+    `,
     big: css`
         ${rem(20)}
     `,
     large: css`
         ${rem(22)}
+    `,
+    extraLarge: css`
+        ${rem(30)}
     `,
 };
 

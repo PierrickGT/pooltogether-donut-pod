@@ -5,7 +5,7 @@ import * as pt from 'pooltogetherjs';
 
 import { nonConstantMethodCall } from 'helpers/Contract';
 
-const getNextAwardDate = () => {
+export const getNextAwardDate = () => {
     const currentPSTDate = moment(new Date().getTime()).tz('America/Los_Angeles');
     const weeklyAwardPSTDate = moment()
         .tz('America/Los_Angeles')

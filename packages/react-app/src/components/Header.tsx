@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 import { NETWORK_CHAIN_ID } from 'Constants';
 import { getWalletName } from 'helpers/Network';
-import { getUserBalance, getUserPendingDeposit, withdrawFromDonutPod } from 'helpers/Pod';
+import { getUserPendingDeposit, getUserPodBalance, withdrawFromDonutPod } from 'helpers/Pod';
 import EthTraderLogo from 'images/EthTraderLogo.png';
 import PoolTogetherLogo from 'images/PoolTogetherLogo';
 
@@ -81,7 +81,7 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
     useEffect(() => {
         if (walletConnected) {
             const calculateBalance = async () => {
-                const userBalance = await getUserBalance(
+                const userBalance = await getUserPodBalance(
                     account as string,
                     chainId as number,
                     library,

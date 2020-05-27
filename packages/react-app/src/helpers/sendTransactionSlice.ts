@@ -26,22 +26,27 @@ const transaction = createSlice({
         sendTransactionStart(state) {
             state.inWallet = true;
         },
-        sendTransactionSuccess(state, action: PayloadAction<{ hash: string }>) {
-            const { hash } = action.payload;
-
-            state.hash = hash;
+        sendTransactionSuccess(state, action: PayloadAction<string>) {
+            state.hash = action.payload;
             state.sent = true;
         },
         sendTransactionCompleted(state) {
+            state.sent = false;
             state.completed = true;
         },
         sendTransactionFailure(state) {
-            // TODO check that this flow is correct
+            state.completed = false;
+            state.error = true;
             state.hash = null;
             state.inWallet = false;
             state.sent = false;
+        },
+        resetTransaction(state) {
             state.completed = false;
-            state.error = true;
+            state.error = false;
+            state.hash = null;
+            state.inWallet = false;
+            state.sent = false;
         },
     },
 });
@@ -51,6 +56,7 @@ export const {
     sendTransactionSuccess,
     sendTransactionCompleted,
     sendTransactionFailure,
+    resetTransaction,
 } = transaction.actions;
 
 export const sendTransaction = (

@@ -7,7 +7,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Modal, { useModal } from 'components/Modal';
 import RenderJoinModal from 'components/Modal/RenderJoin';
 import RenderWalletModal from 'components/Modal/RenderWallet';
-import { depositDaiToDonutPod } from 'helpers/Pod';
 import { getPoolDaiPrize } from 'helpers/Pool';
 import backgroundDonut from 'images/DiamondBackground.png';
 import { globalStyles } from 'styles/global';
@@ -43,9 +42,6 @@ const App: React.FC = () => {
         toggleJoinModal();
     };
 
-    const handleDepositDai = () =>
-        depositDaiToDonutPod(account as string, chainId as number, library, dispatch);
-
     useEffect(() => {
         if (walletConnected) {
             const getPrize = async () => {
@@ -76,9 +72,6 @@ const App: React.FC = () => {
                 {estimatedPrize}
                 <Button type="primary" onClick={handleJoinPod}>
                     Join the Pod
-                </Button>
-                <Button type="primary" onClick={handleDepositDai}>
-                    Deposit DAI to the Pod
                 </Button>
             </div>
             <Modal

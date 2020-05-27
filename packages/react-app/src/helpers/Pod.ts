@@ -44,6 +44,7 @@ export const checkDaiAllowance = async (account: string, chainId: number, librar
 };
 
 export const depositDaiToDonutPod = async (
+    daiValue: string,
     account: string,
     chainId: number,
     library: any,
@@ -58,7 +59,7 @@ export const depositDaiToDonutPod = async (
     );
 
     const params = [
-        utils.parseUnits('1', 18),
+        utils.parseUnits(daiValue.toString(), 18),
         utils.hashMessage(''),
         {
             gasLimit: 1500000,
@@ -68,7 +69,7 @@ export const depositDaiToDonutPod = async (
     dispatch(sendTransaction(donutPodContract, 'deposit', params));
 };
 
-export const getUserBalance = async (account: string, chainId: number, library: any) => {
+export const getUserPodBalance = async (account: string, chainId: number, library: any) => {
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(

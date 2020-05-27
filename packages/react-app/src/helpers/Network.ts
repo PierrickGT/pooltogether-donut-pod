@@ -8,6 +8,14 @@ export const isMainNetwork = (networkId: number) => networkId === MAINNET_NETWOR
 export const isKovanNetwork = (networkId: number) => networkId === KOVAN_NETWORK_ID;
 export const isLocalNetwork = (networkId: number) => networkId === LOCAL_NETWORK_ID;
 
+export const getEtherscanUrl = (networkId: number, type: string, hash: string) => {
+    if (isKovanNetwork(networkId)) {
+        return `https://kovan.etherscan.io/${type}/${hash}`;
+    }
+
+    return `https://etherscan.io/${type}/${hash}`;
+};
+
 export const getProvider = (networkId: number) => {
     if (isMainNetwork(networkId)) {
         return new ethers.providers.EtherscanProvider(

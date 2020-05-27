@@ -2,8 +2,10 @@ import React, { FunctionComponent, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { rem } from 'polished';
 import ReactModal from 'react-modal';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
+import { resetTransaction } from 'helpers/sendTransactionSlice';
 import { purple } from 'styles/colors';
 import { borderRadius, mediaMax } from 'styles/variables';
 
@@ -34,8 +36,11 @@ export const useModal = () => {
 };
 
 const Modal: React.FC<Modal> = ({ className, component, isOpen, title, toggleModal }) => {
+    const dispatch = useDispatch();
+
     const closeModal = () => {
         toggleModal();
+        dispatch(resetTransaction());
     };
 
     const contentClassName = `${className}__content`;
