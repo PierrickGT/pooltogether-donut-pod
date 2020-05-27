@@ -77,7 +77,7 @@ export const sendTransaction = (
 ): AppThunk => async (dispatch) => {
     dispatch(resetTransaction());
 
-    if (params[0]._ethersType === 'BigNumber') {
+    if (params && params[0] && params[0]._ethersType === 'BigNumber') {
         dispatch(sendTransactionStart(Number(utils.formatUnits(params[0].toString(), 18))));
     } else {
         dispatch(sendTransactionStart());

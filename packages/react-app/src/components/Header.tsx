@@ -4,12 +4,13 @@ import { useWeb3React } from '@web3-react/core';
 import { Button, PageHeader } from 'antd';
 import { utils } from 'ethers';
 import pluralize from 'pluralize';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { RootState } from 'app/rootReducer';
 import { NETWORK_CHAIN_ID } from 'Constants';
 import { getWalletName } from 'helpers/Network';
-import { getUserPendingDeposit, getUserPodBalance, withdrawFromDonutPod } from 'helpers/Pod';
+import { getUserPendingDeposit, getUserPodBalance, getUserPodShares } from 'helpers/Pod';
 import EthTraderLogo from 'images/EthTraderLogo.png';
 import PoolTogetherLogo from 'images/PoolTogetherLogo';
 
@@ -76,6 +77,10 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
         library,
     } = useWeb3React();
 
+    const { completed: transactionCompleted } = useSelector(
+        (state: RootState) => state.transaction,
+    );
+
     const [userBalance, setUserBalance] = useState(0);
 
     useEffect(() => {
@@ -93,18 +98,33 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
                     library,
                 );
 
+                const userPodShares = await getUserPodShares(
+                    account as string,
+                    chainId as number,
+                    library,
+                );
+
+                console.log(
+                    'userPodShares',
+                    Number(utils.formatUnits(userPodShares.toString(), 18)),
+                );
+
                 const formattedUserBalance = Number(utils.formatUnits(userBalance.toString(), 18));
+
+                console.log('formattedUserBalance', formattedUserBalance);
 
                 const formattedUserPendingDeposit = Number(
                     utils.formatUnits(userPendingDeposit.toString(), 18),
                 );
+
+                console.log('formattedUserPendingDeposit', formattedUserPendingDeposit);
 
                 setUserBalance(formattedUserBalance + formattedUserPendingDeposit);
             };
 
             calculateBalance();
         }
-    }, [account, chainId, library, walletConnected]);
+    }, [account, chainId, library, transactionCompleted, walletConnected]);
 
     return walletConnected ? (
         <StyledWalletInfo>
@@ -136,14 +156,6 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
 };
 
 const Header: React.FC<HeaderProps> = ({ toggleWalletModal }) => {
-    const { account, chainId, library } = useWeb3React();
-    const dispatch = useDispatch();
-
-    const handleWithdraw = () => {
-        withdrawFromDonutPod(account as string, chainId as number, library, dispatch);
-        // redeemToDaiPool(account as string, chainId as number, library, dispatch);
-    };
-
     return (
         <div>
             <StyledPageHeader
@@ -151,7 +163,6 @@ const Header: React.FC<HeaderProps> = ({ toggleWalletModal }) => {
                 subTitle="r/EthTrader Pod"
                 extra={[<ToggleWalletModalButton key="1" toggleWalletModal={toggleWalletModal} />]}
             />
-            <Button onClick={handleWithdraw}>Withdraw</Button>
         </div>
     );
 };

@@ -6,6 +6,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Modal, { useModal } from 'components/Modal';
 import RenderJoinModal from 'components/Modal/RenderJoin';
 import RenderWalletModal from 'components/Modal/RenderWallet';
+import RenderWithdrawModal from 'components/Modal/RenderWithdraw';
 import { getPoolDaiPrize } from 'helpers/Pool';
 import backgroundDonut from 'images/DiamondBackground.png';
 import { globalStyles } from 'styles/global';
@@ -31,12 +32,17 @@ const App: React.FC = () => {
     const { account, active: walletConnected, chainId, library } = useWeb3React();
     const { modalIsOpen: walletModalIsOpen, toggleModal: toggleWalletModal } = useModal();
     const { modalIsOpen: joinModalIsOpen, toggleModal: toggleJoinModal } = useModal();
+    const { modalIsOpen: withdrawModalIsOpen, toggleModal: toggleWithdrawModal } = useModal();
 
     const [currentPrize, setCurrentPrize] = useState('');
     const [estimatedPrize, setEstimatedPrize] = useState('');
 
     const handleJoinPod = () => {
         toggleJoinModal();
+    };
+
+    const handleWithdrawFromPod = () => {
+        toggleWithdrawModal();
     };
 
     useEffect(() => {
@@ -70,6 +76,9 @@ const App: React.FC = () => {
                 <Button type="primary" onClick={handleJoinPod}>
                     Join the Pod
                 </Button>
+                <Button type="primary" onClick={handleWithdrawFromPod}>
+                    Withdraw from the Pod
+                </Button>
             </div>
             <Modal
                 component={RenderWalletModal}
@@ -81,7 +90,12 @@ const App: React.FC = () => {
                 component={RenderJoinModal}
                 isOpen={joinModalIsOpen}
                 toggleModal={toggleJoinModal}
-                title=""
+            />
+            <Modal
+                component={RenderWithdrawModal}
+                isOpen={withdrawModalIsOpen}
+                toggleModal={toggleWithdrawModal}
+                title="Weekly DONUT Pod: Withdraw Tickets"
             />
             <GlobalStyle />
         </StyledApp>

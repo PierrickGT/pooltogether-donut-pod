@@ -33,6 +33,7 @@ export const getPoolDaiPrize = async (account: string, chainId: number, library:
     const poolDaiAccountedBalance = await poolDaiContract.accountedBalance();
 
     const currentOpenDrawId = await poolDaiContract.currentOpenDrawId();
+    console.log('currentOpenDrawId', currentOpenDrawId);
     const currentDraw = await poolDaiContract.getDraw(currentOpenDrawId);
 
     const prize = pt.utils.calculatePrize(

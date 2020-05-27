@@ -123,7 +123,8 @@ export const getUserPodShares = async (account: string, chainId: number, library
     return userPendingDeposit;
 };
 
-export const withdrawFromDonutPod = async (
+export const withdrawPendingDeposit = async (
+    daiValue: string,
     account: string,
     chainId: number,
     library: any,
@@ -138,7 +139,7 @@ export const withdrawFromDonutPod = async (
     );
 
     const params = [
-        utils.parseUnits('1', 18),
+        utils.parseUnits(daiValue.toString(), 18),
         utils.hashMessage(''),
         {
             gasLimit: 700000,
@@ -155,7 +156,8 @@ export const withdrawFromDonutPod = async (
     );
 };
 
-export const redeemToDaiPool = async (
+export const redeemToAccount = async (
+    daiValue: string,
     account: string,
     chainId: number,
     library: any,
@@ -170,7 +172,33 @@ export const redeemToDaiPool = async (
     );
 
     const params = [
-        utils.parseUnits('1', 18),
+        utils.parseUnits(daiValue.toString(), 18),
+        utils.hashMessage(''),
+        {
+            gasLimit: 700000,
+        },
+    ];
+
+    dispatch(sendTransaction('redeem', donutPodContract, 'redeem', params));
+};
+
+export const redeemToDaiPool = async (
+    daiValue: string,
+    account: string,
+    chainId: number,
+    library: any,
+    dispatch: any,
+) => {
+    const donutPodAddress = addresses[chainId as number].contracts.donutPod;
+
+    const donutPodContract = new Contract(
+        donutPodAddress,
+        abis.Pod.abi,
+        library.getSigner(account),
+    );
+
+    const params = [
+        utils.parseUnits(daiValue.toString(), 18),
         utils.hashMessage(''),
         {
             gasLimit: 700000,

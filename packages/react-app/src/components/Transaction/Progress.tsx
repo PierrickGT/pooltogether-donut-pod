@@ -92,7 +92,33 @@ const TransactionProggress: React.FC = () => {
                     <span>You've sucessfully purchased </span>
                     <span>
                         {transactionValue}&nbsp;DONUT&nbsp;Pod&nbsp;
-                        {pluralize('ticket!', transactionValue as number)}
+                        {pluralize('ticket', transactionValue as number)}&nbsp;!
+                    </span>
+                </StyledTextLarge>
+                <StyledHref
+                    className="ellipsis"
+                    href={getEtherscanUrl(chainId as number, 'tx', transactionHash as string)}
+                >
+                    {transactionHash}
+                </StyledHref>
+            </React.Fragment>
+        );
+    }
+
+    if (
+        transactionCompleted &&
+        (transactionType === 'withdrawPendingDeposit' ||
+            transactionType === 'redeem' ||
+            transactionType === 'withdrawAndRedeemCollateral')
+    ) {
+        return (
+            <React.Fragment>
+                <StyledDonut src={Donut} />
+                <StyledTextLarge>
+                    <span>You've sucessfully withdrawn </span>
+                    <span>
+                        {transactionValue}&nbsp;DONUT&nbsp;Pod&nbsp;
+                        {pluralize('ticket', transactionValue as number)}
                     </span>
                 </StyledTextLarge>
                 <StyledHref
