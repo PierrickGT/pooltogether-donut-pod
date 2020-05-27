@@ -22,7 +22,7 @@ export const unlockDai = async (account: string, chainId: number, library: any, 
         },
     ];
 
-    dispatch(sendTransaction(daiTokenContract, 'approve', params));
+    dispatch(sendTransaction('approve', daiTokenContract, 'approve', params));
 };
 
 export const checkDaiAllowance = async (account: string, chainId: number, library: any) => {
@@ -66,7 +66,7 @@ export const depositDaiToDonutPod = async (
         },
     ];
 
-    dispatch(sendTransaction(donutPodContract, 'deposit', params));
+    dispatch(sendTransaction('deposit', donutPodContract, 'deposit', params));
 };
 
 export const getUserPodBalance = async (account: string, chainId: number, library: any) => {
@@ -145,7 +145,14 @@ export const withdrawFromDonutPod = async (
         },
     ];
 
-    dispatch(sendTransaction(donutPodContract, 'withdrawPendingDeposit', params));
+    dispatch(
+        sendTransaction(
+            'withdrawPendingDeposit',
+            donutPodContract,
+            'withdrawPendingDeposit',
+            params,
+        ),
+    );
 };
 
 export const redeemToDaiPool = async (
@@ -170,5 +177,5 @@ export const redeemToDaiPool = async (
         },
     ];
 
-    dispatch(sendTransaction(donutPodContract, 'redeemToPool', params));
+    dispatch(sendTransaction('redeemToPool', donutPodContract, 'redeemToPool', params));
 };

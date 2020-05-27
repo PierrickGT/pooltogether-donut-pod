@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { Button } from 'antd';
-import { useDispatch } from 'react-redux';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Modal, { useModal } from 'components/Modal';
@@ -29,8 +28,6 @@ const StyledApp = styled.div`
 `;
 
 const App: React.FC = () => {
-    const dispatch = useDispatch();
-
     const { account, active: walletConnected, chainId, library } = useWeb3React();
     const { modalIsOpen: walletModalIsOpen, toggleModal: toggleWalletModal } = useModal();
     const { modalIsOpen: joinModalIsOpen, toggleModal: toggleJoinModal } = useModal();

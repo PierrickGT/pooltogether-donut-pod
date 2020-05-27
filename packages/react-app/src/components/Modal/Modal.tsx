@@ -23,7 +23,7 @@ interface Modal extends ModalProps {
 }
 
 export const useModal = () => {
-    const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     function toggleModal() {
         setIsOpen(!modalIsOpen);

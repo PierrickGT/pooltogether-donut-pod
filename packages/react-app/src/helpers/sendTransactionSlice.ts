@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Contract } from 'ethers';
+import { Contract, utils } from 'ethers';
 
 import { AppThunk } from 'app/store';
 
@@ -9,6 +9,8 @@ export interface TransactionState {
     hash: string | null;
     inWallet: boolean;
     sent: boolean;
+    type: string | null;
+    value?: number | null;
 }
 
 export const initialState: TransactionState = {
@@ -17,22 +19,26 @@ export const initialState: TransactionState = {
     hash: null,
     inWallet: false,
     sent: false,
+    type: null,
+    value: null,
 };
 
 const transaction = createSlice({
     name: 'transaction',
     initialState,
     reducers: {
-        sendTransactionStart(state) {
+        sendTransactionStart(state, action: PayloadAction<number | undefined>) {
             state.inWallet = true;
+            state.value = action.payload ? action.payload : null;
         },
         sendTransactionSuccess(state, action: PayloadAction<string>) {
             state.hash = action.payload;
             state.sent = true;
         },
-        sendTransactionCompleted(state) {
+        sendTransactionCompleted(state, action: PayloadAction<string>) {
             state.sent = false;
             state.completed = true;
+            state.type = action.payload;
         },
         sendTransactionFailure(state) {
             state.completed = false;
@@ -40,6 +46,8 @@ const transaction = createSlice({
             state.hash = null;
             state.inWallet = false;
             state.sent = false;
+            state.type = null;
+            state.value = null;
         },
         resetTransaction(state) {
             state.completed = false;
@@ -47,6 +55,8 @@ const transaction = createSlice({
             state.hash = null;
             state.inWallet = false;
             state.sent = false;
+            state.type = null;
+            state.value = null;
         },
     },
 });
@@ -60,11 +70,18 @@ export const {
 } = transaction.actions;
 
 export const sendTransaction = (
+    transactionType: string,
     contract: Contract,
     methodName: string,
     params: any[] = [],
 ): AppThunk => async (dispatch) => {
-    dispatch(sendTransactionStart());
+    dispatch(resetTransaction());
+
+    if (params[0]._ethersType === 'BigNumber') {
+        dispatch(sendTransactionStart(Number(utils.formatUnits(params[0].toString(), 18))));
+    } else {
+        dispatch(sendTransactionStart());
+    }
 
     try {
         const newTransaction = await contract[methodName].apply(null, params);
@@ -73,7 +90,7 @@ export const sendTransaction = (
 
         await newTransaction.wait();
 
-        dispatch(sendTransactionCompleted());
+        dispatch(sendTransactionCompleted(transactionType));
     } catch (error) {
         console.error(error);
 
