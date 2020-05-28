@@ -22,15 +22,7 @@
     "lint:file": "yarn workspace react-app lint:file",
     "quality": "yarn workspace react-app quality",
     "build": "yarn workspace react-app build --max-old-space-size=12288",
-    "chain": "yarn workspace buidler chain",
-    "test": "yarn workspace buidler test",
-    "start": "yarn workspace react-app start",
-    "compile": "yarn workspace buidler compile",
-    "deploy": "yarn workspace buidler run scripts/deploy.js && npx buidler run scripts/publish.js",
-    "watch": "cd packages/buidler && node scripts/watch.js",
-    "accounts": "yarn workspace buidler accounts",
-    "balance": "yarn workspace buidler balance",
-    "send": "yarn workspace buidler send"
+    "start": "yarn workspace react-app start"
   },
   "workspaces": {
     "packages": [

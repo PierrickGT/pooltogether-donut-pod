@@ -11871,7 +11871,7 @@ moment-timezone@^0.5.31:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.26.0:
+"moment@>= 2.9.0", moment@>=1.6.0, moment@^2.26.0:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.26.0.tgz#5e1f82c6bafca6e83e808b30c8705eed0dcbd39a"
   integrity sha512-oIixUO+OamkUkwjhAVE18rAMfRJNsNe/Stid/gwHSOfHrOtw9EhAY2AHvdKZ/k/MggcYELFCJz/Sn2pL8b8JMw==
@@ -14661,6 +14661,18 @@ react-modal@^3.11.2:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
+
+react-moment-countdown@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-moment-countdown/-/react-moment-countdown-0.4.1.tgz#ea4a188f32fc1f1ccc2b803bf478934eab05dbc5"
+  integrity sha512-TYbnVx5UjuClwGOibxrFkAxY2cPbwa7tudugaRazup/ibuFkVz9767dBl4u76ZONiCjYIzy+VefdQj36qKcuYA==
+
+react-moment-proptypes@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.7.0.tgz#89881479840a76c13574a86e3bb214c4ba564e7a"
+  integrity sha512-ZbOn/P4u469WEGAw5hgkS/E+g1YZqdves2BjYsLluJobzUZCtManhjHiZKjniBVT7MSHM6D/iKtRVzlXVv3ikA==
+  dependencies:
+    moment ">=1.6.0"
 
 react-redux@^7.2.0:
   version "7.2.0"
