@@ -2,6 +2,7 @@
 # pooltogether-donut-pod
 
 Project built for the New York Blockchain Week hackathon organized by Gitcoin.
+
 DONUT Pod is a PoolTogether Pod built for the r/EthTrader Reddit community. Members of the community can group their tickets in the DONUT Pod and increase their chances of winning the weekly DAI Prize.
 
 Thank you to the PoolTogether and Gitcoin team for this opportunity. I've learned a ton and hope you'll like the project!
@@ -29,9 +30,17 @@ cd pooltogether-donut-pod
 yarn install
 ```
 
+Copy `.env.example` and replace API keys by yours:
+
+```
+cp .example.env .env
+```
+
+Start localhost:3000
+
 ```
 yarn start
 ```
 
 ## Live
-
+https://cocky-kilby-df2929.netlify.app
