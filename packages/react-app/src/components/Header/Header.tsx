@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { RootState } from 'app/rootReducer';
 import { NETWORK_CHAIN_ID } from 'Constants';
 import { getWalletName } from 'helpers/Network';
-import { getUserPendingDeposit, getUserPodBalance, getUserPodShares } from 'helpers/Pod';
+import { getUserPendingDeposit, getUserPodBalance } from 'helpers/Pod';
 import EthTraderLogo from 'images/EthTraderLogo.png';
 import PoolTogetherLogo from 'images/PoolTogetherLogo';
 
@@ -98,26 +98,10 @@ const ToggleWalletModalButton: React.FC<HeaderProps> = ({ toggleWalletModal }): 
                     library,
                 );
 
-                const userPodShares = await getUserPodShares(
-                    account as string,
-                    chainId as number,
-                    library,
-                );
-
-                console.log(
-                    'userPodShares',
-                    Number(utils.formatUnits(userPodShares.toString(), 18)),
-                );
-
                 const formattedUserBalance = Number(utils.formatUnits(userBalance.toString(), 18));
-
-                console.log('formattedUserBalance', formattedUserBalance);
-
                 const formattedUserPendingDeposit = Number(
                     utils.formatUnits(userPendingDeposit.toString(), 18),
                 );
-
-                console.log('formattedUserPendingDeposit', formattedUserPendingDeposit);
 
                 setUserBalance(formattedUserBalance + formattedUserPendingDeposit);
             };
@@ -160,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({ toggleWalletModal }) => {
         <div>
             <StyledPageHeader
                 title={<Title />}
-                subTitle="r/EthTrader Pod"
+                subTitle="r/EthTrader DONUT Pod"
                 extra={[<ToggleWalletModalButton key="1" toggleWalletModal={toggleWalletModal} />]}
             />
         </div>
