@@ -1,8 +1,8 @@
-import { abis, addresses } from '@pooltogether-donut-pod/contracts';
 import { Contract, utils } from 'ethers';
 import moment from 'moment-timezone';
 import * as pt from 'pooltogetherjs';
 
+import { abis, addresses } from 'contracts';
 import { nonConstantMethodCall } from 'helpers/Contract';
 
 export const getNextAwardDate = () => {
@@ -24,6 +24,7 @@ export const getNextAwardDate = () => {
 
 export const getPoolDaiPrize = async (account: string, chainId: number, library: any) => {
     const poolDaiContract = new Contract(
+        // @ts-ignore
         addresses[chainId as number].contracts.poolDai,
         abis.BasePool.abi,
         library.getSigner(account),
@@ -67,5 +68,8 @@ export const getPoolDaiPrize = async (account: string, chainId: number, library:
 
     const prizeEstimateInDai = utils.formatUnits(prizeEstimate.toString(), 18);
 
-    return { prizeInDai, prizeEstimateInDai };
+    return {
+        prizeInDai,
+        prizeEstimateInDai,
+    };
 };

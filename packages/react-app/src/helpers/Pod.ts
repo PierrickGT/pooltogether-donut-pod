@@ -1,11 +1,14 @@
-import { abis, addresses } from '@pooltogether-donut-pod/contracts';
 import { Contract, utils } from 'ethers';
 
+import { abis, addresses } from 'contracts';
 import { nonConstantMethodCall } from 'helpers/Contract';
 import { sendTransaction } from 'helpers/sendTransactionSlice';
 
 export const unlockDai = async (account: string, chainId: number, library: any, dispatch: any) => {
+    // @ts-ignore
     const daiTokenAddress = addresses[chainId as number].tokens.dai;
+
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const daiTokenContract = new Contract(
@@ -26,7 +29,10 @@ export const unlockDai = async (account: string, chainId: number, library: any, 
 };
 
 export const checkDaiAllowance = async (account: string, chainId: number, library: any) => {
+    // @ts-ignore
     const daiTokenAddress = addresses[chainId as number].tokens.dai;
+
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const daiTokenContract = new Contract(
@@ -50,6 +56,7 @@ export const depositDaiToDonutPod = async (
     library: any,
     dispatch: any,
 ) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -70,6 +77,7 @@ export const depositDaiToDonutPod = async (
 };
 
 export const getUserPodBalance = async (account: string, chainId: number, library: any) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -89,6 +97,7 @@ export const getUserPodBalance = async (account: string, chainId: number, librar
 };
 
 export const getUserPendingDeposit = async (account: string, chainId: number, library: any) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -108,6 +117,7 @@ export const getUserPendingDeposit = async (account: string, chainId: number, li
 };
 
 export const getUserPodShares = async (account: string, chainId: number, library: any) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -130,6 +140,7 @@ export const withdrawPendingDeposit = async (
     library: any,
     dispatch: any,
 ) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -163,6 +174,7 @@ export const redeemToAccount = async (
     library: any,
     dispatch: any,
 ) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
@@ -189,6 +201,7 @@ export const redeemToDaiPool = async (
     library: any,
     dispatch: any,
 ) => {
+    // @ts-ignore
     const donutPodAddress = addresses[chainId as number].contracts.donutPod;
 
     const donutPodContract = new Contract(
