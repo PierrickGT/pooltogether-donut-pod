@@ -28,7 +28,9 @@ export const getProvider = (networkId: number) => {
         return new ethers.providers.EtherscanProvider('kovan', process.env.REACT_APP_ETHERSCAN_KEY);
     }
 
-    return new ethers.providers.JsonRpcProvider(process.env.REACT_APP_LOCAL_PROVIDER);
+    if (isLocalNetwork(networkId)) {
+        return new ethers.providers.JsonRpcProvider(process.env.REACT_APP_LOCAL_PROVIDER);
+    }
 };
 
 export const getWalletName = (walletProvider: AbstractConnector) => {
