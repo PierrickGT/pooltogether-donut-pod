@@ -1,46 +1,75 @@
+## react-app
 
-# pooltogether-donut-pod
+This package is a fork of the default template provided by [Create React App](https://github.com/facebook/create-react-app).
 
-Project built for the New York Blockchain Week hackathon organized by Gitcoin.
+## Available Scripts
 
-DONUT Pod is a PoolTogether Pod built for the r/EthTrader Reddit community. Members of the community can group their tickets in the DONUT Pod and increase their chances of winning the weekly DAI Prize.
+In the project directory, you can run:
 
-Thank you to the PoolTogether and Gitcoin team for this opportunity. I've learned a ton and hope you'll like the project!
+### `yarn start`
 
-## Pod Contracts
+Runs the app in development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Contracts for the Pod are available in the following repo: https://github.com/PierrickGT/pods
+The page will automatically reload if you make changes to the code.<br>
+You will see the build errors and lint warnings in the console.
 
-## Pool Contracts Mocks
+### `yarn test`
 
-This project is deployed on the Kovan test network.
-If you wish to run it in local, you can run the following contracts mocks: https://github.com/PierrickGT/pooltogether-contracts-mock
+Runs the test watcher in an interactive mode.<br>
+By default, runs tests related to files changed since the last commit.
 
-## ⏱ Quickstart:
+[Read more about testing.](https://facebook.github.io/create-react-app/docs/running-tests)
 
-First, you'll need [NodeJS>=12](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads) installed.
+### `yarn build`
 
-💾 Clone/fork repo, install and then start:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-git clone https://github.com/pierrickgt/pooltogether-donut-pod.git
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-cd pooltogether-donut-pod
+See the React documentation on [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-yarn install
-```
+### `yarn react-app:eject`
 
-Copy `.env.example` and replace API keys by yours:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-```
-cp .example.env .env
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` the React app at any time. This command will
+remove the single build dependency from your React package.
 
-Start localhost:3000
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right
+into your project so you have full control over them. All of the commands except `eject` will still work, but
+they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-```
-yarn start
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Live
-https://cocky-kilby-df2929.netlify.app
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `yarn build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
